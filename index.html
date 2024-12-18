@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio de Sesión</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f3f4f6;
+        }
+        #logo-container {
+            text-align: center;
+            opacity: 1;
+            transition: opacity 0.5s ease-in-out;
+        }
+        #form-container {
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+    <div id="logo-container">
+        <img src="logo/logo.png" alt="Logo" class="mx-auto">
+    </div>
+
+    <div id="form-container" class="absolute w-full max-w-md px-4">
+        <div class="bg-white shadow-md rounded-lg p-8">
+            <h2 class="text-2xl font-bold mb-6 text-center">Iniciar Sesión</h2>
+            <form>
+                <div class="mb-4">
+                    <input 
+                        type="email" 
+                        placeholder="Correo Electrónico" 
+                        class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        required
+                    >
+                </div>
+                <div class="mb-4">
+                    <input 
+                        type="password" 
+                        placeholder="Contraseña" 
+                        class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        required
+                    >
+                </div>
+                <div class="mb-4 text-right">
+                    <a href="#" class="text-blue-500 hover:underline text-sm">
+                        ¿Olvidaste tu contraseña?
+                    </a>
+                </div>
+                <div class="mb-4">
+                    <button 
+                        type="submit" 
+                        class="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 transition duration-300"
+                    >
+                        Iniciar Sesión
+                    </button>
+                </div>
+                <div class="text-center">
+                    <p class="text-sm">
+                        ¿No tienes cuenta? 
+                        <a href="#" class="text-blue-500 hover:underline">Regístrate</a>
+                    </p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const logoContainer = document.getElementById('logo-container');
+            const formContainer = document.getElementById('form-container');
+
+            // Mostrar logo centrado primero
+            logoContainer.style.display = 'flex';
+            logoContainer.style.justifyContent = 'center';
+            logoContainer.style.alignItems = 'center';
+            logoContainer.style.height = '100vh';
+
+            // Ocultar formulario inicialmente
+            formContainer.style.display = 'none';
+
+            // Después de 3 segundos, ocultar logo y mostrar formulario
+            setTimeout(() => {
+                logoContainer.style.opacity = 0;
+                formContainer.style.opacity = 1;
+                formContainer.style.display = 'block';
+
+                // Esperar a que termine la transición para eliminar el logo
+                setTimeout(() => {
+                    logoContainer.style.display = 'none';
+                }, 500);
+            }, 3000);
+        });
+    </script>
+</body>
+</html>
